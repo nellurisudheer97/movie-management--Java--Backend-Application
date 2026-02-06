@@ -34,8 +34,43 @@ public class MovieController {
 
     //we can fetch or get the movie details by using thier Id
     @GetMapping("/{id}")
-    public ResponseEntity<Movie> getMovieById(@PathVariable int id) {
-        Movie movie = movieService.getMovieById(id);
-        return ResponseEntity.ok(movie);
+    public ResponseEntity<?> getMovieById(@PathVariable int id) {
+        try {
+            Movie movie = movieService.getMovieById(id);
+            return ResponseEntity.ok(movie);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Movie not found with id " + id);
+        }
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 
+
+
+
+
