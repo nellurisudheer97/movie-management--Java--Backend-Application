@@ -12,12 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Movie.CineMatinee.Application.Model.Movie;
 import com.Movie.CineMatinee.Application.Service.MovieService;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import jakarta.validation.Valid;
-
 @RestController
 @RequestMapping("/movies")
-@CrossOrigin(origins = "*")
+
+@CrossOrigin(
+	    origins = "*",
+	    allowedHeaders = "*",
+	    methods = {
+	        RequestMethod.GET,
+	        RequestMethod.POST,
+	        RequestMethod.OPTIONS
+	    }
+	)
 public class MovieController {
 
     private final MovieService movieService;
